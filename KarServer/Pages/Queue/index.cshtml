@@ -1,0 +1,30 @@
+﻿@page
+@model KarServer.Pages.Queue.IndexModel
+
+<h2>Your Song Queue</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Song Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Queue)
+        {
+            <tr>
+                <td>@item.Song.Title</td>
+                <td>@item.Song.Artist</td>
+                <td>@item.Song.Genre</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,119 @@
+﻿@page
+@model KarServer.Pages.IndexModel
+@{
+    ViewData["Title"] = "Welcome to Blue Nest Karaoke";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <!-- Google Fonts: Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* CSS Variables for Consistent Colors */
+        :root {
+            --dark-blue: #001f3f;      /* Deep blue for background */
+            --medium-blue: #0074D9;    /* Brighter blue for gradient */
+            --light-blue: #7FDBFF;     /* Button background */
+            --button-hover: #39CCCC;   /* Hover state for buttons */
+        }
+
+        /* Base Styles */
+        body {
+            background: linear-gradient(to bottom, var(--dark-blue), var(--medium-blue));
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Ensures gradient covers full page */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds depth */
+        }
+
+        /* Main Content */
+        main p {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+        }
+
+        .btn {
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth hover effects */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+        }
+
+        .btn:hover {
+            background-color: var(--button-hover);
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Responsive Adjustments */
+        @@media (max-width: 600px) {
+            .button-container {
+                flex-direction: column; /* Stack buttons on small screens */
+            }
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>@ViewData["Title"] <i class="fas fa-microphone"></i></h1>
+        </header>
+        <main>
+            <p>Sing your heart out with our vast library of songs.</p>
+            <div class="button-container">
+                <a href="/songs" class="btn">Browse Songs</a>
+                <a href="/queue" class="btn">View Queue</a>
+                <a href="/profile" class="btn">Manage Profile</a>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; @DateTime.Now.Year Blue Nest Karaoke App. All rights Deserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

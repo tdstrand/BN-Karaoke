@@ -1,0 +1,16 @@
+﻿@page
+@model KarServer.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Blue Nest Karaoke Dashboard";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>@Model.WelcomeMessage</p>
+
+<div>
+    <a href="/Songs" class="btn btn-primary">Browse Songs</a>
+    <a href="/Queue" class="btn btn-primary">View Queue</a>
+    <a href="/Identity/Account/Manage" class="btn btn-secondary">Manage Profile</a>
+    <a href="/Identity/Account/Logout" class="btn btn-danger">Logout</a>
+</div>

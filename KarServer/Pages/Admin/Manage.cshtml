@@ -1,0 +1,57 @@
+﻿@page
+@model KarServer.Pages.Admin.ManageModel
+
+<h2>Admin Management</h2>
+
+<h3>Song Queue</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Song Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Queue)
+        {
+            <tr>
+                <td>@item.User.UserName</td>
+                <td>@item.Song.Title</td>
+                <td>@item.Song.Artist</td>
+                <td>@item.Song.Genre</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form method="post" asp-page-handler="ClearQueue">
+    <button type="submit" class="btn btn-danger">Clear Queue</button>
+</form>
+
+<h3>Song Database</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var song in Model.Songs)
+        {
+            <tr>
+                <td>@song.Title</td>
+                <td>@song.Artist</td>
+                <td>@song.Genre</td>
+                <td>
+                    <form method="post" asp-page-handler="DeleteSong" asp-route-id="@song.Id">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

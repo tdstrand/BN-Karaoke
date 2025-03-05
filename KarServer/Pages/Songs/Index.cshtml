@@ -1,0 +1,29 @@
+﻿@page
+@model KarServer.Pages.Songs.IndexModel
+
+<h2>Song Library</h2>
+
+<form method="get">
+    <input type="text" asp-for="SearchString" placeholder="Search by title, artist, or genre" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var song in Model.Songs)
+        {
+            <tr>
+                <td>@song.Title</td>
+                <td>@song.Artist</td>
+                <td>@song.Genre</td>
+            </tr>
+        }
+    </tbody>
+</table>

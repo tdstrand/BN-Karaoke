@@ -1,0 +1,38 @@
+﻿@page
+@model YourApp.Pages.Admin.UsersModel
+@{
+    ViewData["Title"] = "User Administration";
+}
+
+<h1>User Administration</h1>
+
+<p>
+    <a asp-page="AddUser" class="btn btn-primary">Add New User</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.User.UserName</td>
+                <td>@user.User.Email</td>
+                <td>@string.Join(", ", user.Roles)</td>
+                <td>
+                    <a asp-page="EditRoles" asp-route-id="@user.User.Id" class="btn btn-sm btn-secondary">Edit Roles</a>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@user.User.Id" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
